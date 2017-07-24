@@ -51,7 +51,7 @@ minetest.register_tool("amber:axe", {
 -- Sword --
 
 minetest.register_tool("amber:sword", {
-	description = "Steel Sword",
+	description = "Amber Sword",
 	inventory_image = "amber_sword.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
