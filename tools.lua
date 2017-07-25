@@ -7,12 +7,6 @@ tooltypes = {
 			"Axe",
 			"Sword"
 }
-tooltypes2 = {
-			"pickaxe",
-			"shovel",
-			"axe",
-			"sword"
-}
 amber.create_description = function(n)
 	description = "Amber " .. tooltypes[n]
   return description
@@ -85,9 +79,9 @@ minetest.register_tool("amber:sword", {
 
 if minetest.get_modpath("toolranks") then
 for n=1,4,1 do
-  minetest.override_item("amber:" .. tooltypes2[n], {
+  minetest.override_item("amber:" .. tooltypes[n]:lower(), {
   original_description = "Amber " .. tooltypes[n],
-  description = toolranks.create_description("Amber" .. tooltypes[n], 0, 1),
+  description = toolranks.create_description("Amber " .. tooltypes[n], 0, 1),
   after_use = toolranks.new_afteruse,
 })
 end
