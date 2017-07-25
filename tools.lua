@@ -1,8 +1,26 @@
 -- Tools --
--- Pickaxe --
+-- Descriptions --
 
+tooltypes = {
+			"Pickaxe",
+			"Shovel",
+			"Axe",
+			"Sword"
+}
+tooltypes2 = {
+			"pickaxe",
+			"shovel",
+			"axe",
+			"sword"
+}
+amber.create_description = function(n)
+	description = "Amber " .. tooltypes[n]
+  return description
+end
+
+-- Pickaxe --
 minetest.register_tool("amber:pickaxe", {
-	description = "Amber Pickaxe",
+	description = amber.create_description(1),
 	inventory_image = "amber_pick.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
@@ -18,7 +36,7 @@ minetest.register_tool("amber:pickaxe", {
 -- Shovel --
 
 minetest.register_tool("amber:shovel", {
-	description = "Amber Shovel",
+	description = amber.create_description(2),
 	inventory_image = "amber_shovel.png",
 	wield_image = "amber_shovel.png^[transformR90",
 	tool_capabilities = {
@@ -35,7 +53,7 @@ minetest.register_tool("amber:shovel", {
 -- Axe --
 
 minetest.register_tool("amber:axe", {
-	description = "Amber Axe",
+	description = amber.create_description(3),
 	inventory_image = "amber_axe.png",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
@@ -51,7 +69,7 @@ minetest.register_tool("amber:axe", {
 -- Sword --
 
 minetest.register_tool("amber:sword", {
-	description = "Amber Sword",
+	description = amber.create_description(4),
 	inventory_image = "amber_sword.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
@@ -63,3 +81,14 @@ minetest.register_tool("amber:sword", {
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
+-- Toolranks Support --
+
+if minetest.get_modpath("toolranks") then
+for n=1,4,1 do
+  minetest.override_item("amber:" .. tooltypes2[n], {
+  original_description = "Amber " .. tooltypes[n],
+  description = toolranks.create_description("Amber" .. tooltypes[n], 0, 1),
+  after_use = toolranks.new_afteruse,
+})
+end
+end
