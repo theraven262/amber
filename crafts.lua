@@ -70,3 +70,53 @@ minetest.register_craft({
 	output = "amber:brick",
 	recipe = "amber:amber",
 })
+
+-- Armor --
+
+if minetest.get_modpath("3d_armor") then
+
+minetest.register_craft({
+	output = 'amber:helmet_amber',
+	recipe = {
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+		{'amber:amber', '', 'amber:amber'},
+		{'', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:chestplate_amber',
+	recipe = {
+		{'amber:amber', '', 'amber:amber'},
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:leggings_amber',
+	recipe = {
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+		{'amber:amber', '', 'amber:amber'},
+		{'amber:amber', '', 'amber:amber'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:boots_amber',
+	recipe = {
+		{'', '', ''},
+		{'amber:amber', '', 'amber:amber'},
+		{'amber:amber', '', 'amber:amber'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:shield_amber',
+	recipe = {
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+		{'', 'amber:amber', ''},
+		{'amber:amber', '', 'amber:amber'},
+	}
+})
+end

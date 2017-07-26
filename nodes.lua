@@ -92,3 +92,18 @@ minetest.register_node("amber:block", {
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 })
+if minetest.get_modpath("moreblocks") then
+stairsplus:register_all("amber", "bricks", "amber:bricks", {
+	description = "Amber Brick",
+	tiles = {"amber_bricks.png"},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+stairsplus:register_all("amber", "block", "amber:block", {
+	description = "Amber Block",
+	tiles = {"amber_block.png"},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+end
