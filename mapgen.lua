@@ -1,27 +1,29 @@
 -- Oregen --
--- Scatters --
+-- Sediments --
 
 minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "amber:ambertree_small",
-		wherein        = "default:tree",
-		clust_scarcity = 8 * 8 * 8,
-		clust_num_ores = 4,
-		clust_size     = 2,
-		y_min          = 0,
+		ore            = "amber:dirt",
+		wherein        = "default:dirt",
+		clust_scarcity = 12 * 12 * 12,
+		clust_num_ores = 9,
+		clust_size     = 3,
+		y_min          = 1025,
 		y_max          = 31000,
 })
 
+if minetest.get_modpath("darkage") then
 minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "amber:ambertree_pine_small",
-		wherein        = "default:pinetree",
-		clust_scarcity = 8 * 8 * 8,
-		clust_num_ores = 4,
-		clust_size     = 2,
-		y_min          = 0,
+		ore            = "amber:mud",
+		wherein        = "darkage:mud",
+		clust_scarcity = 7 * 7 * 7,
+		clust_num_ores = 9,
+		clust_size     = 3,
+		y_min          = 1025,
 		y_max          = 31000,
 })
+end
 
 -- Schematics --
 

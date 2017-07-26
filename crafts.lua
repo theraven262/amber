@@ -37,10 +37,36 @@ minetest.register_craft({
 	}
 })
 
+-- Nodes --
+
+minetest.register_craft({
+	output = 'amber:bricks 6',
+	recipe = {
+		{'amber:amber', 'amber:brick', 'amber:amber'},
+		{'amber:brick', 'amber:amber', 'amber:brick'},
+		{'amber:amber', 'amber:brick', 'amber:amber'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:block 4',
+	recipe = {
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+		{'amber:amber', 'amber:brick', 'amber:amber'},
+		{'amber:amber', 'amber:amber', 'amber:amber'},
+	}
+})
+
 -- Cooking --
 
 minetest.register_craft({
 	type = "cooking",
 	output = "amber:amber",
 	recipe = "amber:amber_lump",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "amber:brick",
+	recipe = "amber:amber",
 })

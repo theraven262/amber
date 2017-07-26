@@ -20,7 +20,7 @@ minetest.register_tool("amber:pickaxe", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=20, maxlevel=2},
+			cracky = {times={[1]=4.20, [2]=1.80, [3]=0.80}, uses=20, maxlevel=2},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -37,7 +37,7 @@ minetest.register_tool("amber:shovel", {
 		full_punch_interval = 1.1,
 		max_drop_level=1,
 		groupcaps={
-			crumbly = {times={[1]=1.50, [2]=0.90, [3]=0.40}, uses=30, maxlevel=2},
+			crumbly = {times={[1]=1.70, [2]=1.00, [3]=0.40}, uses=30, maxlevel=2},
 		},
 		damage_groups = {fleshy=3},
 	},
@@ -53,7 +53,7 @@ minetest.register_tool("amber:axe", {
 		full_punch_interval = 1.0,
 		max_drop_level=1,
 		groupcaps={
-			choppy={times={[1]=2.50, [2]=1.40, [3]=1.00}, uses=20, maxlevel=2},
+			choppy={times={[1]=2.70, [2]=1.50, [3]=1.00}, uses=20, maxlevel=2},
 		},
 		damage_groups = {fleshy=4},
 	},
@@ -69,14 +69,13 @@ minetest.register_tool("amber:sword", {
 		full_punch_interval = 0.8,
 		max_drop_level=1,
 		groupcaps={
-			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=30, maxlevel=2},
+			snappy={times={[1]=2.7, [2]=1.30, [3]=0.35}, uses=30, maxlevel=2},
 		},
 		damage_groups = {fleshy=6},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
 -- Toolranks Support --
-
 if minetest.get_modpath("toolranks") then
 for n=1,4,1 do
   minetest.override_item("amber:" .. tooltypes[n]:lower(), {
