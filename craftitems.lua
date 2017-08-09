@@ -11,7 +11,7 @@ minetest.register_craftitem("amber:amber_lump", {
 	inventory_image = "amber_lump.png",
 })
 
-minetest.register_craftitem("amber:amber_brick", {
+minetest.register_craftitem("amber:brick", {
 	description = "Amber Brick",
 	inventory_image = "amber_brick.png",
 })
