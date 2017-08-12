@@ -107,3 +107,71 @@ stairsplus:register_all("amber", "block", "amber:block", {
 	sounds = default.node_sound_glass_defaults(),
 })
 end
+
+minetest.register_node("amber:glass", {
+	description = "Amber Glass",
+	tiles = {"amber_glass.png"},
+	drawtype = "allfaces",
+	use_texture_alpha = true,
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("amber:glass_medieval", {
+	description = "Amber Medieval Glass",
+	tiles = {"amber_glass_medieval.png"},
+	drawtype = "allfaces",
+	use_texture_alpha = true,
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+-- Misc --
+if minetest.get_modpath("3d_armor") then
+types = {
+		"Pickaxe",
+		"Axe",
+		"Shovel",
+		"Sword",
+		"Helmet",
+		"Chest",
+		"Leggings",
+		"Boots",
+		"Shield"
+}
+else
+types = {
+		"Pickaxe",
+		"Axe",
+		"Shovel",
+		"Sword",
+}
+end
+for i=1,9 do
+minetest.register_node("amber:matrix_" .. types[i]:lower(), {
+	description = "Amber " .. types[i] .. " Matrix",
+	tiles = {
+		"amber_matrix_top.png^amber_symbol_" .. types[i]:lower() .. ".png",
+		"amber_matrix_top.png",
+		"amber_matrix_side.png",
+		},
+	drawtype = "nodebox",
+	paramtype = "light",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375, -0.5, -0.4375, 0.4375, -0.1875, 0.4375}, -- NodeBox1
+			{-0.375, -0.1875, -0.375, 0.375, -0.125, 0.375}, -- NodeBox2
+		}
+	},
+	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults()
+})
+end
