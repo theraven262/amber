@@ -13,7 +13,7 @@ amber.create_description = function(n)
 end
 
 amber.create_ancient_description = function(n)
-	description = "Ancient aAmber " .. tooltypes[n]
+	description = "Ancient Amber " .. tooltypes[n]
   return description
 end
 
