@@ -132,8 +132,89 @@ minetest.register_node("amber:glass_medieval", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+-- Root System Nodes --
+
+
+minetest.register_node("amber:root_wall", {
+	description = "Root System Wall",
+	tiles = {"amber_root_wall.png"},
+	is_ground_content = true,
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+do_circle = function(pos)
+
+    local size = 1
+    local step = 90
+
+    for i = 0, 360, step do
+
+        local angle = (i * math.pi / 180)
+        local x = size * math.cos(angle)
+        local z = size * math.sin(angle)
+				local y = size * math.sin(angle)
+        local newpos = {x = pos.x + x, y = pos.y + y, z = pos.z + z}
+
+        minetest.add_particle({
+            pos = newpos,
+            velocity = {x = math.random(angle)/100, y = math.random(angle)/100, z = math.random(angle)/100},
+            acceleration = {x = -0.01, y = -0.01, z = -0.01},
+            expirationtime = 8,
+            collisiondetection = true,
+            texture = "amber_particle_animated.png",
+						animation = {
+                type = "vertical_frames",
+                aspect_w = 7,
+                aspect_h = 7,
+                length = 1,
+},
+            size = 1,
+            glow = 15,
+        })
+	end
+end
+
+minetest.register_node("amber:particle_spawner", {
+    description = "Particles!",
+    drawtype = "airlike",
+		paramtype = "light",
+		walkable = false,
+		pointable = false,
+		sunlight_propagates = true,
+		buildable_to = true,
+    light_source = 12,
+    on_blast = function() end,
+		groups = {not_in_creative_inventory = 1},
+})
+
+minetest.register_node("amber:air", {
+	description = "Glowing Air (Yea, sure)",
+	drawtype = "airlike",
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	sunlight_propagates = true,
+	buildable_to = true,
+	light_source = 6,
+	groups = {not_in_creative_inventory = 1},
+})
+
+minetest.register_node("amber:tree_all", {
+	description = "Tree",
+	tiles = {"default_tree.png"},
+	is_ground_content = false,
+	drop = "default:tree",
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
+	sounds = default.node_sound_wood_defaults(),
+})
+
 -- Misc --
 if minetest.get_modpath("3d_armor") then
+n=9
+else
+n=4
+end
 types = {
 		"Pickaxe",
 		"Axe",
@@ -145,15 +226,7 @@ types = {
 		"Boots",
 		"Shield"
 }
-else
-types = {
-		"Pickaxe",
-		"Axe",
-		"Shovel",
-		"Sword",
-}
-end
-for i=1,9 do
+for i=1,n do
 minetest.register_node("amber:matrix_" .. types[i]:lower(), {
 	description = "Amber " .. types[i] .. " Matrix",
 	tiles = {
