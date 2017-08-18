@@ -23,6 +23,64 @@ minetest.register_node("amber:mud", {
 	}),
 })
 end
+
+-- Crafted Nodes --
+
+minetest.register_node("amber:lamp", {
+    description = "Amber Lamp",
+    drawtype = "plantlike",
+		tiles = {"amber_lamp.png"},
+		paramtype = "light",
+		walkable = false,
+		inventory_image = "amber_lamp.png",
+		wield_image = "amber_lamp.png",
+		walkable = false,
+		selection_box = {
+			type = "fixed",
+			fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
+		},
+		sunlight_propagates = true,
+		light_source = 12,
+    on_blast = function() end,
+		on_construct = function(pos)
+		       minetest.get_node_timer(pos):start(0.4) -- start timer
+		    end,
+		    on_timer = function(pos, elapsed)
+		        light_it_up(pos)
+		        minetest.get_node_timer(pos):start(0.1) -- set timer to every 1 second
+		    end,
+		groups = {cracky = 3, oddly_breakable_by_hand = 3},
+		sounds = default.node_sound_glass_defaults(),
+})
+
+light_it_up = function(pos)
+	local size = 0.2
+	local step = 45
+
+	for i = 0, 360, step do
+			local angle = (i * math.pi / 180)
+			local x = size * math.cos(angle)
+			local z = size * math.sin(angle)
+			local newpos = {x = pos.x + x, y = pos.y+0.3, z = pos.z + z}
+minetest.add_particle({
+		pos = newpos,
+		velocity = {x = -1*x/2, y = 1, z = -1*z/2},
+		acceleration = {x = 0, y = 0, z = 0},
+		expirationtime = 1.9,
+		collisiondetection = true,
+		texture = "amber_fire_animated.png",
+		animation = {
+				type = "vertical_frames",
+				aspect_w = 1,
+				aspect_h = 1,
+				length = 2,
+},
+		size = 1,
+		glow = 15,
+})
+end
+end
+
 -- Tree Trunks --
 minetest.register_node("amber:ambertree", {
 	description = "Tree With Amber",
@@ -188,18 +246,6 @@ minetest.register_node("amber:particle_spawner", {
 		groups = {not_in_creative_inventory = 1},
 })
 
-minetest.register_node("amber:air", {
-	description = "Glowing Air (Yea, sure)",
-	drawtype = "airlike",
-	paramtype = "light",
-	walkable = false,
-	pointable = false,
-	sunlight_propagates = true,
-	buildable_to = true,
-	light_source = 6,
-	groups = {not_in_creative_inventory = 1},
-})
-
 minetest.register_node("amber:tree_all", {
 	description = "Tree",
 	tiles = {"default_tree.png"},
@@ -207,6 +253,26 @@ minetest.register_node("amber:tree_all", {
 	drop = "default:tree",
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
 	sounds = default.node_sound_wood_defaults(),
+})
+
+-- Root System Vegetation --
+
+minetest.register_node("amber:root", {
+	description = "Root Branch",
+	drawtype = "plantlike",
+	tiles = {"amber_root.png"},
+	inventory_image = "amber_root.png",
+	wield_image = "amber_root.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, attached_node = 1},
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
+	},
 })
 
 -- Misc --

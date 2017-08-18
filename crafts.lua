@@ -84,6 +84,13 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:stick',
+	recipe = {
+		{'amber:root'},
+	}
+})
+
 -- Cooking --
 
 minetest.register_craft({
