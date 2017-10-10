@@ -39,13 +39,7 @@ armor:register_armor("amber:helmet", {
 			physics_speed=-0.015, physics_gravity=0.015},
 		armor_groups = {fleshy=10},
 		damage_groups = {cracky=2, snappy=3, choppy=2, crumbly=1, level=2},
-		reciprocate_damage = true,
-		on_damage = function(player, index, stack)
-			play_sound_effect(player, "default_dig_glass")
-		end,
-		on_destroy = function(player, index, stack)
-			play_sound_effect(player, "default_dug_glass")
-		end,
+		reciprocate_damage = true
 })
 
 -- Ancient Armors --

@@ -25,7 +25,7 @@ minetest.register_node("amber:mud", {
 end
 
 -- Crafted Nodes --
-
+--[[
 minetest.register_node("amber:lamp", {
     description = "Amber Lamp",
     drawtype = "plantlike",
@@ -52,7 +52,7 @@ minetest.register_node("amber:lamp", {
 		groups = {cracky = 3, oddly_breakable_by_hand = 3},
 		sounds = default.node_sound_glass_defaults(),
 })
-
+]]--
 light_it_up = function(pos)
 	local size = 0.2
 	local step = 45
@@ -216,7 +216,7 @@ do_circle = function(pos)
 
         minetest.add_particle({
             pos = newpos,
-            velocity = {x = math.random(angle)/100, y = math.random(angle)/100, z = math.random(angle)/100},
+            velocity = {x = math.random(0, angle)/100, y = math.random(0, angle)/100, z = math.random(0, angle)/100},
             acceleration = {x = -0.01, y = -0.01, z = -0.01},
             expirationtime = 8,
             collisiondetection = true,

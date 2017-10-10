@@ -235,3 +235,11 @@ minetest.register_craft({
 })
 
 end
+
+
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "amber:root_wall",
+	burntime = 8,
+})
