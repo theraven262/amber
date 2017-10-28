@@ -25,7 +25,7 @@ minetest.register_node("amber:mud", {
 end
 
 -- Crafted Nodes --
---[[
+
 minetest.register_node("amber:lamp", {
     description = "Amber Lamp",
     drawtype = "plantlike",
@@ -52,7 +52,7 @@ minetest.register_node("amber:lamp", {
 		groups = {cracky = 3, oddly_breakable_by_hand = 3},
 		sounds = default.node_sound_glass_defaults(),
 })
-]]--
+
 light_it_up = function(pos)
 	local size = 0.2
 	local step = 45
@@ -133,6 +133,33 @@ minetest.register_node("amber:ambertree_pine_small", {
 
 	on_place = minetest.rotate_node
 })
+
+-- Root Amber Trees --
+
+minetest.register_node("amber:ambertree_root", {
+	description = "Tree With Amber",
+	tiles = {"((default_tree.png^[colorize:#80800099)^amber_ore.png)^amber_root.png"},
+	paramtype2 = "facedir",
+  drop = 'amber:amber_lump 2',
+	is_ground_content = false,
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
+	sounds = default.node_sound_glass_defaults(),
+
+	on_place = minetest.rotate_node
+})
+
+minetest.register_node("amber:ambertree_root_small", {
+	description = "Tree With Amber",
+	tiles = {"((default_tree.png^[colorize:#80800050)^amber_ore_small.png)^amber_root.png"},
+	paramtype2 = "facedir",
+  drop = 'amber:amber_lump',
+	is_ground_content = false,
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
+	sounds = default.node_sound_glass_defaults(),
+
+	on_place = minetest.rotate_node
+})
+
 -- Decorations --
 
 minetest.register_node("amber:bricks", {
@@ -195,11 +222,67 @@ minetest.register_node("amber:glass_medieval", {
 
 minetest.register_node("amber:root_wall", {
 	description = "Root System Wall",
-	tiles = {"amber_root_wall.png"},
+	tiles = {"amber_root_wall.png^amber_root.png"},
 	is_ground_content = true,
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 })
+
+minetest.register_node("amber:root_wall_light", {
+	description = "Root System Wall Light",
+	tiles = {"(amber_root_wall.png^amber_green_sediment.png)^amber_root.png"},
+	is_ground_content = true,
+	sunlight_propagates = true,
+	light_source = 8,
+	drop = 'amber:green_crystals',
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("amber:tree_all", {
+	description = "Tree",
+	tiles = {"default_tree.png^(amber_root.png^[transformR90)"},
+	is_ground_content = false,
+	drop = "default:tree",
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+-- Root System Vegetation --
+
+minetest.register_node("amber:root", {
+	description = "Root Branch",
+	drawtype = "nodebox",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0.55, -1, -1, 0.55, 1, 1},
+			{-1, -1, -0.55, 1, 1, -0.55},
+			{-0.55, -1, -1, -0.55, 1, 1},
+			{-1, -1, 0.55, 1, 1, 0.55},
+			{-1, -0.55, -1, 1, -0.55, 1},
+			{-1, 0.55, -1, 1, 0.55, 1},
+		}
+	},
+	tiles = {"amber_root_offset.png"},
+	inventory_image = "amber_root.png",
+	wield_image = "amber_root.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	climbable = true,
+	pointable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3},
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-1, -1, -1, 1, 1, 1},
+}
+})
+
+
+-- Particles --
 
 do_circle = function(pos)
 
@@ -244,35 +327,6 @@ minetest.register_node("amber:particle_spawner", {
     light_source = 12,
     on_blast = function() end,
 		groups = {not_in_creative_inventory = 1},
-})
-
-minetest.register_node("amber:tree_all", {
-	description = "Tree",
-	tiles = {"default_tree.png"},
-	is_ground_content = false,
-	drop = "default:tree",
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
-	sounds = default.node_sound_wood_defaults(),
-})
-
--- Root System Vegetation --
-
-minetest.register_node("amber:root", {
-	description = "Root Branch",
-	drawtype = "plantlike",
-	tiles = {"amber_root.png"},
-	inventory_image = "amber_root.png",
-	wield_image = "amber_root.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	groups = {snappy = 3, flammable = 3, attached_node = 1},
-	sounds = default.node_sound_wood_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
-	},
 })
 
 -- Misc --

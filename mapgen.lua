@@ -147,7 +147,7 @@ minetest.register_ore({
 		ore             = "air",
 		wherein         = {"default:stone", "default:stone_with_coal", "default:stone_with_iron", "default:stone_with_copper", "default:stone_with_tin", "default:gravel", "default:sand", "default:silver_sand"},
 		clust_scarcity  = 16 * 16 * 16,
-		clust_size      = 17,
+		clust_size      = 15,
 		y_min           = -64,
 		y_max           = -32,
 	})
@@ -156,10 +156,31 @@ minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "amber:root_wall",
 		wherein         = {"default:stone", "default:stone_with_coal", "default:stone_with_iron", "default:stone_with_copper", "default:stone_with_tin", "default:gravel", "default:sand", "default:silver_sand"},
-		clust_scarcity  = 2 * 2 * 2,
+		clust_scarcity  = 8 * 6 * 8,
 		clust_size      = 25,
 		y_min           = -64,
 		y_max           = -32,
+	})
+
+	minetest.register_ore({
+			ore_type        = "blob",
+			ore             = "amber:root_wall",
+			wherein         = {"default:stone", "default:stone_with_coal", "default:stone_with_iron", "default:stone_with_copper", "default:stone_with_tin", "default:gravel", "default:sand", "default:silver_sand"},
+			clust_scarcity  = 3 * 2 * 3,
+			clust_size      = 10,
+			y_min           = -64,
+			y_max           = -32,
+		})
+
+	minetest.register_ore({
+			ore_type       = "scatter",
+			ore            = "air",
+			wherein        = {"amber:root_wall", "default:stone", "default:stone_with_coal", "default:stone_with_iron", "default:stone_with_copper", "default:stone_with_tin", "default:gravel", "default:sand", "default:silver_sand"},
+			clust_scarcity = 3 * 4 * 3,
+			clust_num_ores = 32,
+			clust_size     = 18,
+			y_min          = -64,
+			y_max          = -32,
 	})
 
 
@@ -168,33 +189,66 @@ minetest.register_ore({
 minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "amber:tree_all",
-		wherein         = {"air", "amber:root_wall"},
+		wherein         = {"default:water_source", "air", "amber:root_wall", "default:stone", "default:stone_with_coal", "default:stone_with_iron", "default:stone_with_copper", "default:stone_with_tin", "default:gravel", "default:sand", "default:silver_sand"},
 		clust_scarcity  = 10 * 2 * 10,
 		clust_size      = 16,
 		y_min           = -72,
-		y_max           = -20,
+		y_max           = -16,
 		noise_params    = {
 			offset = 0.0,
 			scale = 0.5,
-			spread = {x = 100, y = 100, z = 100},
+			spread = {x = 50, y = 100, z = 50},
 			seed = 5476,
-			octaves = 1,
+			octaves = 2,
 			persist = 0.0
 		},
 })
 
 minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "amber:root_wall",
+		wherein        = {"amber:root_wall", "default:stone"},
+		clust_scarcity = 3 * 3 * 3,
+		clust_num_ores = 12,
+		clust_size     = 6,
+		y_min          = -64,
+		y_max          = -16,
+})
+
+minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "amber:root_wall_light",
+		wherein        = "amber:root_wall",
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 8,
+		clust_size     = 12,
+		y_min          = -64,
+		y_max          = -32,
+})
+
+minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "amber:root",
+		wherein        = "air",
+		clust_scarcity = 8 * 8 * 8,
+		clust_num_ores = 16,
+		clust_size     = 12,
+		y_min          = -64,
+		y_max          = -16,
+})
+
+minetest.register_ore({
 		ore_type        = "blob",
 		ore             = "amber:tree_all",
-		wherein         = {"air", "amber:root_wall"},
+		wherein         = {"default:water_source", "air", "amber:root_wall", "default:stone", "default:stone_with_coal", "default:stone_with_iron", "default:stone_with_copper", "default:stone_with_tin", "default:gravel", "default:sand", "default:silver_sand"},
 		clust_scarcity  = 10 * 4 * 10,
 		clust_size      = 16,
 		y_min           = -72,
-		y_max           = -20,
+		y_max           = -16,
 		noise_params    = {
 			offset = 0.0,
 			scale = 0.5,
-			spread = {x = 100, y = 100, z = 100},
+			spread = {x = 75, y = 75, z = 75},
 			seed = 3489,
 			octaves = 1,
 			persist = 0.0
@@ -283,7 +337,7 @@ minetest.register_ore({
 
 minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "amber:ambertree",
+		ore            = "amber:ambertree_root",
 		wherein        = "amber:tree_all",
 		clust_scarcity = 8 * 8 * 8,
 		clust_num_ores = 16,
@@ -294,7 +348,7 @@ minetest.register_ore({
 
 minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "amber:ambertree_small",
+		ore            = "amber:ambertree_root_small",
 		wherein        = "amber:tree_all",
 		clust_scarcity = 8 * 8 * 8,
 		clust_num_ores = 16,
@@ -325,14 +379,3 @@ minetest.register_abm{
 		do_circle(pos)
 	end
 }
-
--- Root System Vegetation --
-
-minetest.register_decoration({
-		deco_type = "simple",
-		place_on = {"amber:tree_all"},
-		sidelen = 4,
-		y_min = -64,
-		y_max = -32,
-		decoration = "amber:root",
-})
