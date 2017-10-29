@@ -255,6 +255,17 @@ minetest.register_ore({
 		},
 })
 
+minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "amber:ambertree_green",
+		wherein        = {"amber:tree_all"},
+		clust_scarcity = 6 * 6 * 6,
+		clust_num_ores = 8,
+		clust_size     = 8,
+		y_min          = -64,
+		y_max          = -16,
+})
+
 -- Dirt --
 
 minetest.register_ore({

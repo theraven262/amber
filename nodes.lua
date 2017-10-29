@@ -160,12 +160,35 @@ minetest.register_node("amber:ambertree_root_small", {
 	on_place = minetest.rotate_node
 })
 
+minetest.register_node("amber:ambertree_green", {
+	description = "Tree With Green Sediments",
+	tiles = {"((default_tree.png^[colorize:#00800025)^amber_green_sediment.png)^amber_root.png"},
+	paramtype2 = "facedir",
+  drop = 'amber:green_crystals',
+	light_source = 8,
+	is_ground_content = false,
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	sounds = default.node_sound_glass_defaults(),
+
+	on_place = minetest.rotate_node
+})
+
 -- Decorations --
 
 minetest.register_node("amber:bricks", {
 	description = "Amber Bricks",
 	tiles = {"amber_bricks.png"},
 	is_ground_content = false,
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("amber:bricks_scarab", {
+	description = "Decorated Amber Bricks",
+	tiles = {"amber_bricks.png^amber_brick_scarab_overlay.png"},
+	is_ground_content = false,
+	light_source = 6,
+	paramtype2 = "facedir",
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -177,6 +200,47 @@ minetest.register_node("amber:block", {
 	groups = {cracky = 3, oddly_breakable_by_hand = 3},
 	sounds = default.node_sound_glass_defaults(),
 })
+
+minetest.register_node("amber:block_eye", {
+	description = "Decorated Amber Block",
+	tiles = {"amber_block.png^amber_block_eye_overlay.png"},
+	is_ground_content = false,
+	light_source = 6,
+	paramtype2 = "facedir",
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("amber:block_frame", {
+	description = "Decorated Amber Block",
+	tiles = {"amber_block.png^amber_frame_overlay.png"},
+	is_ground_content = false,
+	light_source = 4,
+	paramtype2 = "facedir",
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("amber:block_sun_edge", {
+	description = "Decorated Amber Block",
+	tiles = {"amber_block.png^amber_sun_edge_overlay.png"},
+	is_ground_content = false,
+	light_source = 6,
+	paramtype2 = "facedir",
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
+minetest.register_node("amber:block_sun", {
+	description = "Decorated Amber Block",
+	tiles = {"amber_block.png^amber_sun_overlay.png"},
+	is_ground_content = false,
+	light_source = 12,
+	paramtype2 = "facedir",
+	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
 if minetest.get_modpath("moreblocks") then
 stairsplus:register_all("amber", "bricks", "amber:bricks", {
 	description = "Amber Brick",
@@ -230,11 +294,11 @@ minetest.register_node("amber:root_wall", {
 
 minetest.register_node("amber:root_wall_light", {
 	description = "Root System Wall Light",
-	tiles = {"(amber_root_wall.png^amber_green_sediment.png)^amber_root.png"},
+	tiles = {"((amber_root_wall.png^[colorize:#00800025)^amber_green_sediment.png)^amber_root.png"},
 	is_ground_content = true,
 	sunlight_propagates = true,
 	light_source = 8,
-	drop = 'amber:green_crystals',
+	drop = 'amber:green_crystals 3',
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -243,8 +307,7 @@ minetest.register_node("amber:tree_all", {
 	description = "Tree",
 	tiles = {"default_tree.png^(amber_root.png^[transformR90)"},
 	is_ground_content = false,
-	drop = "default:tree",
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 })
 

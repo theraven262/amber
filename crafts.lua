@@ -75,6 +75,69 @@ minetest.register_craft({
 	}
 })
 
+-- Decorative Hieroglyphs --
+
+minetest.register_craft({
+	output = 'amber:bricks_scarab',
+	recipe = {
+		{'amber:green_crystals', '', 'amber:green_crystals'},
+		{'', 'amber:bricks', ''},
+		{'', 'amber:green_crystals', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:block_eye',
+	recipe = {
+		{'', 'amber:green_crystals', ''},
+		{'amber:green_crystals', 'amber:block', 'amber:green_crystals'},
+		{'', 'amber:green_crystals', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:block_frame 5',
+	recipe = {
+		{'amber:green_crystals', 'amber:block', 'amber:green_crystals'},
+		{'amber:block', 'amber:block', 'amber:block'},
+		{'amber:green_crystals', 'amber:block', 'amber:green_crystals'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:block_sun',
+	recipe = {
+		{'amber:green_crystals', 'amber:green_crystals', 'amber:green_crystals'},
+		{'amber:green_crystals', 'amber:block', 'amber:green_crystals'},
+		{'amber:green_crystals', 'amber:green_crystals', 'amber:green_crystals'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:block_sun_edge 4',
+	recipe = {
+		{'amber:green_crystals', '', 'amber:green_crystals'},
+		{'amber:green_crystals', 'amber:block', 'amber:green_crystals'},
+		{'amber:block', 'amber:block', 'amber:block'},
+	}
+})
+
+-- Root System --
+
+minetest.register_craft({
+	output = 'default:wood 2',
+	recipe = {
+		{'amber:tree_all'},
+	}
+})
+
+minetest.register_craft({
+	output = 'amber:ambertree_green',
+	recipe = {
+		{'amber:tree_all', 'amber:green_crystals'},
+	}
+})
+
 -- Craftitems --
 
 minetest.register_craft({
